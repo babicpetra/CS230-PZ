@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateManifestacijaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <b:messages errorStyle="color: red" infoStyle="color: green" />
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateManifestacijaLabel_naslov}" for="naslov" />
+                    <p:inputText id="naslov" value="#{manifestacijaController.selected.naslov}" title="#{bundle.CreateManifestacijaTitle_naslov}" required="true" requiredMessage="#{bundle.CreateManifestacijaRequiredMessage_naslov}"/>
+                    <h:outputLabel value="#{bundle.CreateManifestacijaLabel_opis}" for="opis" />
+                    <p:inputTextarea rows="4" cols="30" id="opis" value="#{manifestacijaController.selected.opis}" title="#{bundle.CreateManifestacijaTitle_opis}" />
+                    <h:outputLabel value="#{bundle.CreateManifestacijaLabel_cena}" for="cena" />
+                    <p:inputText id="cena" value="#{manifestacijaController.selected.cena}" title="#{bundle.CreateManifestacijaTitle_cena}" />
+                    <h:outputLabel value="#{bundle.CreateManifestacijaLabel_mesto}" for="mesto" />
+                    <p:inputText id="mesto" value="#{manifestacijaController.selected.mesto}" title="#{bundle.CreateManifestacijaTitle_mesto}" />
+                    <p:outputLabel for="button" value="#{bundle.CreateManifestacijaLabel_datum}" />
+                    <p:calendar id="button" value="#{manifestacijaController.selected.datum}" showOn="button" />
+                    <h:outputLabel value="#{bundle.CreateManifestacijaLabel_vreme}" for="vreme" />
+                    <p:inputText id="vreme" value="#{manifestacijaController.selected.vreme}" title="#{bundle.CreateManifestacijaTitle_vreme}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </p:inputText>
+                    
+                    <h:outputLabel value="#{bundle.CreateManifestacijaLabel_idVrstaManifestacije}" for="idVrstaManifestacije" />
+                    <p:selectOneMenu id="idVrstaManifestacije" value="#{manifestacijaController.selected.idVrstaManifestacije}"  >
+                        <f:selectItems value="#{vrstaManifestacijeController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <p:commandButton action="#{manifestacijaController.create}" value="#{bundle.CreateManifestacijaSaveLink}" />
+                <br />
+                <br />
+                <br />
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

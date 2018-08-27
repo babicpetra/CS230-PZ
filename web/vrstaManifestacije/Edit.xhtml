@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVrstaManifestacijeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVrstaManifestacijeLabel_idVrstaManifestacije}" for="idVrstaManifestacije" />
+                    <h:inputText id="idVrstaManifestacije" value="#{vrstaManifestacijeController.selected.idVrstaManifestacije}" title="#{bundle.EditVrstaManifestacijeTitle_idVrstaManifestacije}" required="true" requiredMessage="#{bundle.EditVrstaManifestacijeRequiredMessage_idVrstaManifestacije}"/>
+                    <h:outputLabel value="#{bundle.EditVrstaManifestacijeLabel_naziv}" for="naziv" />
+                    <h:inputText id="naziv" value="#{vrstaManifestacijeController.selected.naziv}" title="#{bundle.EditVrstaManifestacijeTitle_naziv}" />
+                </h:panelGrid>
+                <h:commandLink action="#{vrstaManifestacijeController.update}" value="#{bundle.EditVrstaManifestacijeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVrstaManifestacijeViewLink}"/>
+                <br />
+                <h:commandLink action="#{vrstaManifestacijeController.prepareList}" value="#{bundle.EditVrstaManifestacijeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVrstaManifestacijeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

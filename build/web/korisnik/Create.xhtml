@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateKorisnikTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="#{bundle.CreateKorisnikLabel_username}" for="username" />
+                    <p:inputText id="username" value="#{korisnikController.selected.username}" title="#{bundle.CreateKorisnikTitle_username}" />
+              
+                    <p:outputLabel value="#{bundle.CreateKorisnikLabel_password}" for="password" />
+                    <p:password id="password" value="#{korisnikController.selected.password}" title="#{bundle.CreateKorisnikTitle_password}" match="passwordRepeat"/>
+                    <p:outputLabel value="Potvrdite lozinku:" for="passwordRepeat"/>
+                    <p:password id="passwordRepeat" label="Potvrdite lozinku" required="true" value="#{korisnikController.selected.password}" />
+                 </h:panelGrid>
+                <br />
+                <b:commandButton action="#{korisnikController.create}" value="#{bundle.CreateKorisnikSaveLink}"  />
+                <br />
+                <br />
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+            xmlns:b="http://bootsfaces.net/ui">
+    <ui:include src="/adminHome.xhtml" />
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title" >
+            <h:outputText value="Aktuelne manifestacije"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListManifestacijaEmpty}" rendered="#{manifestacijaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{manifestacijaController.items.rowCount > 0}">
+                    <h:outputText value="#{manifestacijaController.pagination.pageFirstItem + 1}..#{manifestacijaController.pagination.pageLastItem + 1}/#{manifestacijaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{manifestacijaController.previous}" value="#{bundle.Previous} #{manifestacijaController.pagination.pageSize}" rendered="#{manifestacijaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{manifestacijaController.next}" value="#{bundle.Next} #{manifestacijaController.pagination.pageSize}" rendered="#{manifestacijaController.pagination.hasNextPage}"/>&nbsp;
+                    <b:dataTable value="#{manifestacijaController.items}" var="item" border="0" >
+                        
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListManifestacijaTitle_naslov}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.naslov}"/>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListManifestacijaTitle_opis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opis}"/>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListManifestacijaTitle_cena}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cena}"/>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListManifestacijaTitle_mesto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mesto}"/>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListManifestacijaTitle_datum}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datum}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListManifestacijaTitle_vreme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vreme}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="Vrsta manifestacije"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idVrstaManifestacije}"/>
+                        </b:column>
+                        <b:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:outputText value=" "/>
+                            <b:commandLink action="#{manifestacijaController.prepareEdit}" value="Izmeni"/>
+                            <h:outputText value=" "/>
+                            <b:commandLink action="#{manifestacijaController.destroy}" value="Izbriši"/>
+                            <h:outputText value=" "/>
+                            <b:commandLink action="#{kartaController.create}" value="Kupi kartu"/>
+                        </b:column>
+                    </b:dataTable>
+                </h:panelGroup>
+                <br />
+                <br />
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

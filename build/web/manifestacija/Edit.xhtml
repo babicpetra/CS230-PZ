@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditManifestacijaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditManifestacijaLabel_idManifestacija}" for="idManifestacija" />
+                    <h:inputText id="idManifestacija" value="#{manifestacijaController.selected.idManifestacija}" title="#{bundle.EditManifestacijaTitle_idManifestacija}" required="true" requiredMessage="#{bundle.EditManifestacijaRequiredMessage_idManifestacija}"/>
+                    <h:outputLabel value="#{bundle.EditManifestacijaLabel_naslov}" for="naslov" />
+                    <h:inputText id="naslov" value="#{manifestacijaController.selected.naslov}" title="#{bundle.EditManifestacijaTitle_naslov}" required="true" requiredMessage="#{bundle.EditManifestacijaRequiredMessage_naslov}"/>
+                    <h:outputLabel value="#{bundle.EditManifestacijaLabel_opis}" for="opis" />
+                    <h:inputTextarea rows="4" cols="30" id="opis" value="#{manifestacijaController.selected.opis}" title="#{bundle.EditManifestacijaTitle_opis}" />
+                    <h:outputLabel value="#{bundle.EditManifestacijaLabel_cena}" for="cena" />
+                    <h:inputText id="cena" value="#{manifestacijaController.selected.cena}" title="#{bundle.EditManifestacijaTitle_cena}" />
+                    <h:outputLabel value="#{bundle.EditManifestacijaLabel_mesto}" for="mesto" />
+                    <h:inputText id="mesto" value="#{manifestacijaController.selected.mesto}" title="#{bundle.EditManifestacijaTitle_mesto}" />
+                    <h:outputLabel value="#{bundle.EditManifestacijaLabel_datum}" for="datum" />
+                    <h:inputText id="datum" value="#{manifestacijaController.selected.datum}" title="#{bundle.EditManifestacijaTitle_datum}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditManifestacijaLabel_vreme}" for="vreme" />
+                    <h:inputText id="vreme" value="#{manifestacijaController.selected.vreme}" title="#{bundle.EditManifestacijaTitle_vreme}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditManifestacijaLabel_idVrstaManifestacije}" for="idVrstaManifestacije" />
+                    <h:selectOneMenu id="idVrstaManifestacije" value="#{manifestacijaController.selected.idVrstaManifestacije}" title="#{bundle.EditManifestacijaTitle_idVrstaManifestacije}" >
+                        <f:selectItems value="#{vrstaManifestacijeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{manifestacijaController.update}" value="#{bundle.EditManifestacijaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditManifestacijaViewLink}"/>
+                <br />
+                <h:commandLink action="#{manifestacijaController.prepareList}" value="#{bundle.EditManifestacijaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/logout" value="#{bundle.EditManifestacijaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

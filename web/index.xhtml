@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+            xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                  xmlns:b="http://bootsfaces.net/ui"
+                  xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+       <ui:define name="title">
+            <h:outputText value="Login"></h:outputText>
+        </ui:define>
+                <ui:define name="body">
+        <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+        </h:panelGroup>
+       <h:form>
+            <h:panelGrid columns="2">
+                    <p:outputLabel value="#{bundle.CreateKorisnikLabel_username}" for="username" />
+                    <p:inputText id="username" value="#{login.username}" title="#{bundle.CreateKorisnikTitle_username}" />
+                    <p:outputLabel value="#{bundle.CreateKorisnikLabel_password}" for="password" />
+                    <p:password id="password" value="#{login.password}" title="#{bundle.CreateKorisnikTitle_password}" />
+            </h:panelGrid>
+            <b:commandButton action="#{login.login}" value="Login"  />
+            <br />
+            <br />
+            <p:outputLabel value="Nemate nalog?" />
+            <br />
+            <h:link outcome="/korisnik/Create" value="Registrujte se"/>
+        </h:form>
+        </ui:define>
+        
+
+
+
+
+
+
+
+
+
+
+
+</html>
+
