@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Petra/Documents/NetBeansProjects/CS230-Project/src/java/com/cs230/pz/session/Login.java</file>
-            <file>file:/C:/Users/Petra/Documents/NetBeansProjects/CS230-Project/web/adminPanel.xhtml</file>
-            <file>file:/C:/Users/Petra/Documents/NetBeansProjects/CS230-Project/web/resources/css/jsfcrud.css</file>
-            <file>file:/C:/Users/Petra/Documents/NetBeansProjects/CS230-Project/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Petra/Documents/NetBeansProjects/CS230-Project/web/template.xhtml</file>
-            <file>file:/C:/Users/Petra/Documents/NetBeansProjects/CS230-Project/web/index.xhtml</file>
-            <file>file:/C:/Users/Petra/Documents/NetBeansProjects/CS230-Project/web/adminHome.xhtml</file>
-            <file>file:/C:/Users/Petra/Documents/NetBeansProjects/CS230-Project/web/korisnik/Login.xhtml</file>
-            <file>file:/C:/Users/Petra/Documents/NetBeansProjects/CS230-Project/src/java/com/cs230/pz/session/AuthorizationFilter.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
